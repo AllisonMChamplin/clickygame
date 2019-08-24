@@ -6,18 +6,6 @@ import Jumbotron from "./components/Jumbotron/";
 // import GameCard from "./components/GameCard/";
 import GameBoard from "./components/GameBoard/";
 import cards from "./cards.json";
-import map from "./map.png";
-
-
-const styles = {
-  wrapper: {
-    // backgroundImage: `url(${map})`,
-    // backgroundSize: "90%",
-    // backgroundRepeat: "no-repeat",
-    // backgroundPositionX: "center",
-    // height: "100%",
-  }
-};
 
 function App() {
   return (
