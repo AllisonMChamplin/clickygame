@@ -1,31 +1,33 @@
 import React from 'react';
 import './App.css';
 import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
-import Jumbotron from "./components/Jumbotron";
-import GameCard from "./components/GameCard/";
+// import NavBar from "./components/NavBar";
+import Jumbotron from "./components/Jumbotron/";
+// import GameCard from "./components/GameCard/";
 import GameBoard from "./components/GameBoard/";
 import cards from "./cards.json";
+import map from "./map.png";
 
+
+const styles = {
+  wrapper: {
+    // backgroundImage: `url(${map})`,
+    // backgroundSize: "90%",
+    // backgroundRepeat: "no-repeat",
+    // backgroundPositionX: "center",
+    // height: "100%",
+  }
+};
 
 function App() {
   return (
-    <>
-      <NavBar />
+    <div className="container-fluid" id="wrapper">
+      {/* <NavBar /> */}
       <Jumbotron />
-      <GameBoard>
-        <h1 className="title">Cards List</h1>
-        <GameCard
-          name={cards[0].name}
-          image={cards[0].image}
-          occupation={cards[0].occupation}
-          location={cards[0].location}
-        />
-      </GameBoard>
+      <GameBoard cards={cards} />
       <Footer />
-    </>
+    </div>
   );
 }
 
 export default App;
-

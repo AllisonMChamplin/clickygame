@@ -1,27 +1,75 @@
 [
     {
       "id": 1,
-      "name": "SpongeBob",
+      "name": "dwarf 1",
       "image":
-        "https://vignette.wikia.nocookie.net/spongebobgalaxy/images/0/07/SpongeBob_SquarePants.png/revision/latest?cb=20171228024014",
-      "occupation": "Fry Cook",
-      "location": "A Pineapple Under the Sea"
+        "./images/dwarf-1.jpg"
     },
     {
       "id": 2,
-      "name": "Mr. Krabs",
+      "name": "dwarf 2",
       "image":
-        "https://vignette3.wikia.nocookie.net/vsbattles/images/8/80/Mr._Krabs.png/revision/latest?cb=20150919162131",
-      "occupation": "Restaurant Owner",
-      "location": "A Giant Anchor"
+        "./images/dwarf-2.jpg"
     },
     {
       "id": 3,
-      "name": "Squidward",
+      "name": "dwarf 3",
       "image":
-        "https://vignette2.wikia.nocookie.net/fictionalcharacters/images/a/ac/Squidward.png/revision/latest?cb=20131121012626",
-      "occupation": "Cashier",
-      "location": "An Easter Island Head"
+        "./images/dwarf-3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "dwarf 4",
+      "image":
+        "./images/dwarf-4.jpg"
+    },
+    {
+      "id": 5,
+      "name": "dwarf 5",
+      "image":
+        "./images/dwarf-5.jpg"
+    },
+    {
+      "id": 6,
+      "name": "dwarf 6",
+      "image":
+        "./images/dwarf-6.jpg"
+    },
+    {
+      "id": 7,
+      "name": "dwarf 7",
+      "image":
+        "./images/dwarf-7.jpg"
+    },
+    {
+      "id": 8,
+      "name": "dwarf 8",
+      "image":
+        "./images/dwarf-8.jpg"
+    },
+    {
+      "id": 9,
+      "name": "dwarf 9",
+      "image":
+        "./images/dwarf-9.jpg"
+    },
+    {
+      "id": 10,
+      "name": "dwarf 10",
+      "image":
+        "./images/dwarf-10.jpg"
+    },
+    {
+      "id": 11,
+      "name": "dwarf 11",
+      "image":
+        "./images/dwarf-11.jpg"
+    },
+    {
+      "id": 12,
+      "name": "dwarf 12",
+      "image":
+        "./images/dwarf-12.jpg"
     }
   ]
   

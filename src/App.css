@@ -2,4 +2,11 @@
   text-align: center;
 }
 
+body {
+  background: #333;
+}
 
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
