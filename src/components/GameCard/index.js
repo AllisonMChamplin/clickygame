@@ -1,8 +1,6 @@
 import React from 'react';
 import "./style.css";
 
-let score = 0;
-
 class GameCard extends React.Component {
     constructor(props) {
         super(props);
@@ -12,8 +10,8 @@ class GameCard extends React.Component {
     }
 
     handleClick(e) {
-        e.preventDefault();        
-        console.log("The image was clicked.", this.props.id);
+        e.preventDefault();
+        console.log("The " + this.props.id + " image was clicked.");
         this.setState(state => ({
             isClicked: true
         }));
