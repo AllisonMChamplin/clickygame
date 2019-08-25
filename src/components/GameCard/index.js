@@ -12,9 +12,15 @@ class GameCard extends React.Component {
     handleClick(e) {
         e.preventDefault();
         console.log("The " + this.props.id + " image was clicked.");
+        // Is it game over?
+        if (this.state.isClicked) {
+            this.props.gameOver();
+            return;
+        }
         this.setState(state => ({
             isClicked: true
         }));
+        this.props.scorePoints(1);
         console.log(this.state.isClicked);
     }
 

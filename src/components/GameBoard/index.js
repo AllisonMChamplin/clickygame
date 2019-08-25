@@ -14,6 +14,15 @@ class GameBoard extends React.Component {
         };
     }
 
+    scorePoints = (points) => {
+        console.log("scorePoints: ", points);
+        this.shuffleCards(this.state.gameCardArray);
+    }
+
+    gameOver = () => {
+        console.log("gameOver");
+    }
+
     componentDidMount() {
         console.log("componentDidMount: ", this);
         let test = cardsJson.map(card => (
@@ -22,7 +31,8 @@ class GameBoard extends React.Component {
                 key={card.id}
                 name={card.name}
                 image={card.image}
-                board={this}
+                scorePoints={this.scorePoints}
+                gameOver={this.gameOver}                
             />
         ))
         console.log("test: ", test);
