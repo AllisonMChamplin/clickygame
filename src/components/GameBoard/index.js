@@ -3,6 +3,16 @@ import "./style.css";
 import GameCard from "../GameCard/";
 import cardsJson from "../../cards.json";
 
+const styles = {
+    header: {
+        width: "85%",
+        textAlign: "center",
+        color: "rgb(255, 255, 255)",
+        margin: "5px auto",
+        padding: "0",
+    }
+};
+
 class GameBoard extends React.Component {
 
     constructor(props) {
@@ -16,11 +26,17 @@ class GameBoard extends React.Component {
 
     scorePoints = (points) => {
         console.log("scorePoints: ", points);
+        let oldScore = this.state.score;
+        let newScore = oldScore + points;
+        this.setState({ score: newScore });
         this.shuffleCards(this.state.gameCardArray);
     }
 
     gameOver = () => {
         console.log("gameOver");
+        if (this.state.score > this.state.highScore || this.state.score === 0) {
+            this.setState({ highScore: this.state.score });
+        }
     }
 
     componentDidMount() {
@@ -32,7 +48,7 @@ class GameBoard extends React.Component {
                 name={card.name}
                 image={card.image}
                 scorePoints={this.scorePoints}
-                gameOver={this.gameOver}                
+                gameOver={this.gameOver}
             />
         ))
         console.log("test: ", test);
@@ -52,13 +68,21 @@ class GameBoard extends React.Component {
 
     updateBoard() {
         return (
-            this.state.gameCardArray
+            <>
+                <header style={styles.header}>
+                    <a className="navbar-brand" href="/">Dwarf Clicky Game</a>
+                    <div className="score ml-auto">Score: {this.state.score} | Top Score: {this.state.highScore}</div>
+                </header>
+                <div>
+                    {this.state.gameCardArray}
+                </div>
+            </>
         )
     }
 
     render() {
         return (
-            this.state.gameCardArray
+            this.updateBoard()
         )
     }
 };
