@@ -12,7 +12,7 @@ class App extends Component {
         <div className="text-center clearfix game-board">
           <GameBoard />
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

@@ -12,10 +12,7 @@ const styles = {
 
 function Jumbotron() {
     return (
-        <header style={styles.header}>
-            <a className="navbar-brand" href="/">Dwarf Clicky Game</a>
-            <div className="score ml-auto">Score: 0 | Top Score: 0</div>
-        </header>
+        <p className="instructions">Click on an image to earn points, but don't click on any more than once!</p>
     );
 }
 

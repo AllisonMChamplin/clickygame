@@ -1,5 +1,6 @@
 import React from 'react';
 import "./style.css";
+import Jumbotron from "../Jumbotron/";
 import GameCard from "../GameCard/";
 import cardsJson from "../../cards.json";
 
@@ -17,10 +18,7 @@ const styles = {
     },
     score: {
         color: "#fff",
-        fontSize: "1.3em",
-        border: "1px solid #666",
-        padding: "6px 0 10px 0",
-        marginTop: "12px"
+        border: "1px solid #666"
     }
 };
 
@@ -82,9 +80,14 @@ class GameBoard extends React.Component {
                 <header style={styles.header}>
                     <div className="container-fluid" style={styles.contHeader}>
                         <div className="row">
-                            <div className="col"><div  style={styles.score}>Score: {this.state.score}</div></div>
-                            <div className="col-6"><h1 style={styles.title}>Dwarf Clicky Game</h1></div>
-                            <div className="col"><div  style={styles.score}>Top Score: {this.state.highScore}</div></div>
+                            <div className="col"><h1>Dwarf Clicky Game</h1></div>
+                        </div>
+                        <div className="row">
+                            <div className="col"><Jumbotron /></div>
+                        </div>
+                        <div className="row">
+                            <div className="col text-center"><div>Score: {this.state.score}</div></div>
+                            <div className="col text-center"><div>Top Score: {this.state.highScore}</div></div>
                         </div>
                     </div>
                 </header>
