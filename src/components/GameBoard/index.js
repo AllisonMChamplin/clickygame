@@ -3,60 +3,52 @@ import "./style.css";
 import GameCard from "../GameCard/";
 import cardsJson from "../../cards.json";
 
-const card = cardsJson[0];
-
 class GameBoard extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            active: true,
             gameCardArray: [],
-            orderArray: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
             score: 0,
             highScore: 0
         };
-        console.log("card", card);
     }
 
     componentDidMount() {
         console.log("componentDidMount: ", this);
-        this.initializeGameCards();
-    }
-
-    initializeGameCards() {
-        //     let x = cardsJson.map(card => (
-        //         <GameCard
-        //             id={card.id}
-        //             key={card.id}
-        //             name={card.name}
-        //             image={card.image}
-        //         />
-        //     ))
-        //     this.setState({
-        //         gameCardArray: x
-        //     });
-        //     console.log("x: ", x)
-        this.updateBoard();
-    }
-
-    updateBoard() {
-        //     // this.setState({
-        //     //     gameCardArray: x
-        //     // });
-        return (
+        let test = cardsJson.map(card => (
             <GameCard
                 id={card.id}
                 key={card.id}
                 name={card.name}
                 image={card.image}
+                board={this}
             />
+        ))
+        console.log("test: ", test);
+        this.shuffleCards(test);
+    }
+
+    shuffleCards(cardList) {
+        // let cardList = this.state.gameCardArray;
+        console.log("cardList: ", cardList);
+        for (let i = cardList.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+            [cardList[i], cardList[j]] = [cardList[j], cardList[i]];
+        }
+        this.setState({ gameCardArray: cardList });
+        this.updateBoard();
+    }
+
+    updateBoard() {
+        return (
+            this.state.gameCardArray
         )
     }
 
     render() {
         return (
-            this.updateBoard()
+            this.state.gameCardArray
         )
     }
 };
