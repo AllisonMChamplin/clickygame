@@ -5,16 +5,26 @@ import cardsJson from "../../cards.json";
 
 const styles = {
     header: {
-        width: "85%",
-        textAlign: "center",
-        color: "rgb(255, 255, 255)",
-        margin: "5px auto",
-        padding: "0",
+        color: "#fff"
+    },
+    contHeader: {
+        width: "95%",
+        margin: "0 auto"
+    },
+    title: {
+        margin: "10px auto",
+        color: "#fff"
+    },
+    score: {
+        color: "#fff",
+        fontSize: "1.3em",
+        border: "1px solid #666",
+        padding: "6px 0 10px 0",
+        marginTop: "12px"
     }
 };
 
 class GameBoard extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -70,8 +80,13 @@ class GameBoard extends React.Component {
         return (
             <>
                 <header style={styles.header}>
-                    <a className="navbar-brand" href="/">Dwarf Clicky Game</a>
-                    <div className="score ml-auto">Score: {this.state.score} | Top Score: {this.state.highScore}</div>
+                    <div className="container-fluid" style={styles.contHeader}>
+                        <div className="row">
+                            <div className="col"><div  style={styles.score}>Score: {this.state.score}</div></div>
+                            <div className="col-6"><h1 style={styles.title}>Dwarf Clicky Game</h1></div>
+                            <div className="col"><div  style={styles.score}>Top Score: {this.state.highScore}</div></div>
+                        </div>
+                    </div>
                 </header>
                 <div>
                     {this.state.gameCardArray}
