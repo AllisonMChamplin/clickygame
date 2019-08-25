@@ -68,13 +68,23 @@ h1 {
     padding: 3px 10px 7px;
 }
 
+.btn {
+	background: goldenrod;
+	border: 1px solid #fff;
+	padding: 2px 14px;
+}
+
+.btn:hover {
+	background: gold;
+	border: 1px solid #fff;
+}
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 	.game-image {
 		width: 14%;
 		display: inline-block;
-		max-height: 14rem;
+		max-height: 13rem;
 		overflow: hidden;
 		margin: 2px;
 		border: 2px solid #222;
