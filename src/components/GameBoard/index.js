@@ -34,12 +34,27 @@ class GameBoard extends React.Component {
         super(props);
         this.state = {
             cardOrder: cOrder,
+            isClicked: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             gameOver: false,
             score: 0,
             highScore: 0,
             message: "Click on a dwarf to earn points, but don't click on any more than once!"
         };
-        // this.shuffleCards();
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        console.log("hi***");
+        console.log("e: ", e);
+        let isClickedArray = this.state.isClicked.slice(0);
+        let isClicked = isClickedArray[e];
+        if (isClicked) {
+            this.gameOver();
+        } else {
+            isClickedArray[e] = 1;
+            this.setState({ isClicked: isClickedArray });
+            this.scorePoints(1);
+        }
     }
 
     scorePoints = (points) => {
@@ -70,7 +85,7 @@ class GameBoard extends React.Component {
     }
 
     resetGame = () => {
-        this.setState({ gameOver: false, message: "Click on a dwarf to earn points, but don't click on any more than once!", score: 0 });
+        this.setState({ gameOver: false, message: "Click on a dwarf to earn points, but don't click on any more than once!", score: 0, isClicked: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] });
         this.shuffle();
     }
 
@@ -92,7 +107,7 @@ class GameBoard extends React.Component {
                             <div className="col"><h1>React Hobbit Clicky Game</h1></div>
                         </div>
                         <div className="row">
-                            <div className="col"><Jumbotron message={this.state.message} gameOver={this.state.gameOver} 
+                            <div className="col"><Jumbotron message={this.state.message} gameOver={this.state.gameOver}
                                 score={this.state.score} resetGame={this.resetGame} /></div>
                         </div>
                         <div className="row">
@@ -112,6 +127,7 @@ class GameBoard extends React.Component {
                                 scorePoints={this.scorePoints}
                                 gameOver={this.gameOver}
                                 isDisabled={this.state.gameOver}
+                                handleClick={() => this.handleClick(card)}
                             />
                         ))
                     }
