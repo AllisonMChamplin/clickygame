@@ -11,3 +11,4 @@ A clicky memory game done in React. Click on a dwarf to earn points, but don't c
 
 * [React](https://reactjs.org/)
 * [Create React App](https://github.com/facebookincubator/create-react-app)
+* [Node.js](https://nodejs.org/en/)
