@@ -44,16 +44,18 @@ class GameBoard extends React.Component {
     }
 
     handleClick(e) {
-        console.log("hi***");
-        console.log("e: ", e);
-        let isClickedArray = this.state.isClicked.slice(0);
-        let isClicked = isClickedArray[e];
-        if (isClicked) {
-            this.gameOver();
-        } else {
-            isClickedArray[e] = 1;
-            this.setState({ isClicked: isClickedArray });
-            this.scorePoints(1);
+        if (!this.state.gameOver) {
+            console.log("hi***");
+            console.log("e: ", e);
+            let isClickedArray = this.state.isClicked.slice(0);
+            let isClicked = isClickedArray[e];
+            if (isClicked) {
+                this.gameOver();
+            } else {
+                isClickedArray[e] = 1;
+                this.setState({ isClicked: isClickedArray });
+                this.scorePoints(1);
+            }
         }
     }
 
@@ -80,7 +82,7 @@ class GameBoard extends React.Component {
     }
 
     gameOver = () => {
-        this.setState({ gameOver: true, message: "Game Over!" });
+        this.setState({ gameOver: true, message: "" });
         return;
     }
 

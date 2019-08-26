@@ -29,7 +29,7 @@ class GameCard extends React.Component {
 
         let classNames = "game-image hover14";
         if (this.props.isDisabled) {
-            classNames = "game-image hover14 disable"
+            classNames = "game-image disable"
         }
 
         return (

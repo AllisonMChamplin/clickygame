@@ -1,7 +1,7 @@
 .game-image {
-	width: 15%;
+	width: 14%;
 	display: inline-block;
-	max-height: 15rem;
+	max-height: 14rem;
 	overflow: hidden;
 	margin: 0 2px;
 	border: 2px solid #222;
@@ -60,23 +60,25 @@ h1 {
 }
 
 .instructions {
-    font-size: 1em;
+    font-size: .8em;
     margin: 50x 0;
     border: 1px solid goldenrod;
     width: 95%;
     margin: 5px auto;
-    padding: 3px 10px 7px;
+    padding: 2px 5px 4px;
 }
 
 .btn {
 	background: goldenrod;
-	border: 1px solid #fff;
-	padding: 2px 14px;
+	border: 0;
+	padding: 0 14px;
+	margin: 0;
+	font-size: 1em;
 }
 
 .btn:hover {
 	background: gold;
-	border: 1px solid #fff;
+	border: 0;
 }
 
 .disable {
@@ -88,20 +90,22 @@ h1 {
 	.game-image {
 		width: 14%;
 		display: inline-block;
-		max-height: 13rem;
+		max-height: 14rem;
 		overflow: hidden;
-		margin: 2px;
 		border: 2px solid #222;
 	}
 	h1 {
 		font-size: 2em;
 	}
+	.instructions {
+		padding: 2px 5px 4px;
+		font-size: 1em;
+	}
 }
 
 /* Medium devices (tablets, 768px and up) */
-/* @media (min-width: 768px) { 
+@media (min-width: 768px) { 
     .game-image {
-        margin: 8px;
-        border: 6px solid #222;
+		margin: 2px 5px;
     }
-} */
+}
