@@ -79,6 +79,10 @@ h1 {
 	border: 1px solid #fff;
 }
 
+.disable {
+	opacity: 0.4;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 	.game-image {

@@ -9,7 +9,7 @@ class Reset extends React.Component {
     // The render method returns the JSX that should be rendered
     render() {
         return (
-            <button className='btn'>Reset Game!</button>
+            <button className='btn' onClick={this.props.gameBoardResetFunction}>Reset Game!</button>
         );
     }
 }

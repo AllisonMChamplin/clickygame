@@ -4,7 +4,12 @@ import Reset from "../Reset/";
 function Jumbotron(props) {
     const isGameOver = props.gameOver;
     if (isGameOver) {
-        return <Reset test={props.resetGame} />;
+        return (
+            <p className="instructions">
+                {props.message}
+                <Reset gameBoardResetFunction={props.resetGame} />
+            </p>
+        )
     } else {
         return (
             <p className="instructions">

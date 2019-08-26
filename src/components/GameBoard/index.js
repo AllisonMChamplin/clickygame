@@ -22,40 +22,28 @@ const styles = {
     }
 };
 
+const cardOrder = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+let cOrder = cardOrder.slice(0);
+for (let i = cOrder.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    [cOrder[i], cOrder[j]] = [cOrder[j], cOrder[i]];
+}
+
 class GameBoard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            gameCardArray: [],
+            cardOrder: cOrder,
             gameOver: false,
             score: 0,
             highScore: 0,
             message: "Click on a dwarf to earn points, but don't click on any more than once!"
         };
-    }
-
-    componentDidMount() {
-        console.log("componentDidMount: ", this);
-        let test = cardsJson.map(card => (
-            <GameCard
-                id={card.id}
-                key={card.id}
-                name={card.name}
-                image={card.image}
-                scorePoints={this.scorePoints}
-                gameOver={this.gameOver}
-            />
-        ))
-        console.log("test: ", test);
-        this.shuffleCards(test);
-    }
-
-    componentWillUnmount() {
-        console.log("componentWillUnmount: ", this);
+        // this.shuffleCards();
     }
 
     scorePoints = (points) => {
-        console.log("scorePoints: ", points);
+        // console.log("scorePoints: ", points);
         this.setState({ message: "You guessed correctly and scored a point! Guess again!" });
         let oldScore = this.state.score;
         let newScore = oldScore + points;
@@ -63,31 +51,39 @@ class GameBoard extends React.Component {
         if (this.state.highScore <= newScore) {
             this.setState({ highScore: newScore });
         }
-        this.shuffleCards(this.state.gameCardArray);
+        this.shuffle();
     }
 
-    gameOver = () => {
-        console.log("gameOver");
-        this.setState({ gameOver: true, message: "gameOver!" });
-    }
-    
-    resetGame = (x, y) => {
-        console.log("resetGame");
-        this.setState({ gameOver: x, message: y });
-    }
-
-    shuffleCards(cardList) {
-        // let cardList = this.state.gameCardArray;
-        console.log("cardList: ", cardList);
+    shuffle() {
+        let cardList = this.state.cardOrder.slice(0);
         for (let i = cardList.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
             [cardList[i], cardList[j]] = [cardList[j], cardList[i]];
+            this.setState({ cardOrder: cardList });
         }
-        this.setState({ gameCardArray: cardList });
-        this.updateBoard();
+        return;
     }
 
-    updateBoard() {
+    gameOver = () => {
+        this.setState({ gameOver: true, message: "Game Over!" });
+        return;
+    }
+
+    resetGame = () => {
+        this.setState({ gameOver: false, message: "Click on a dwarf to earn points, but don't click on any more than once!", score: 0 });
+        this.shuffle();
+    }
+
+    // shuffleCards() {
+    //     let cardList = this.state.cardOrder;
+    //     for (let i = cardList.length - 1; i > 0; i--) {
+    //         let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    //         [cardList[i], cardList[j]] = [cardList[j], cardList[i]];
+    //         this.setState({ cardOrder: cardList });
+    //     }
+    // }
+
+    render() {
         return (
             <>
                 <header style={styles.header}>
@@ -96,7 +92,8 @@ class GameBoard extends React.Component {
                             <div className="col"><h1>React Hobbit Clicky Game</h1></div>
                         </div>
                         <div className="row">
-                            <div className="col"><Jumbotron message={this.state.message} gameOver={this.state.gameOver} score={this.state.score} resetGame={this.resetGame} /></div>
+                            <div className="col"><Jumbotron message={this.state.message} gameOver={this.state.gameOver} 
+                                score={this.state.score} resetGame={this.resetGame} /></div>
                         </div>
                         <div className="row">
                             <div className="col text-center"><div>Score: {this.state.score}</div></div>
@@ -105,15 +102,21 @@ class GameBoard extends React.Component {
                     </div>
                 </header>
                 <div>
-                    {this.state.gameCardArray}
+                    {
+                        this.state.cardOrder.map(card => (
+                            <GameCard
+                                id={cardsJson[card].id}
+                                key={cardsJson[card].id}
+                                name={cardsJson[card].name}
+                                image={cardsJson[card].image}
+                                scorePoints={this.scorePoints}
+                                gameOver={this.gameOver}
+                                isDisabled={this.state.gameOver}
+                            />
+                        ))
+                    }
                 </div>
             </>
-        )
-    }
-
-    render() {
-        return (
-            this.updateBoard()
         )
     }
 };

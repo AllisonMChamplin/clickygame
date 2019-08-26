@@ -4,7 +4,7 @@ import "./style.css";
 class GameCard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { isClicked: false };
+        this.state = { isClicked: false, isDisabled: this.props.isGameOver };
         // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
     }
@@ -12,22 +12,28 @@ class GameCard extends React.Component {
     handleClick(e) {
         e.preventDefault();
         console.log("The " + this.props.id + " image was clicked.");
-        // Is it game over?
+        // Is it game over upon this click?
         if (this.state.isClicked) {
             this.props.gameOver();
-            return;
+        } else {
+            this.setState(state => ({
+                isClicked: true
+            }));
+            this.props.scorePoints(1);
         }
-        this.setState(state => ({
-            isClicked: true
-        }));
-        this.props.scorePoints(1);
-        console.log(this.state.isClicked);
     }
 
     render() {
+        console.log("this.props.isDisabled: ", this.props.isDisabled);
+
+        let classNames = "game-image hover14";
+        if (this.props.isDisabled) {
+            classNames = "game-image hover14 disable"
+        }
+
         return (
             <>
-                <div className="game-image hover14" id={this.props.id}>
+                <div className={classNames} id={this.props.id}>
                     <figure><img alt={this.props.name} src={this.props.image} id={this.props.id} className="" onClick={this.handleClick} /></figure>
                 </div>
             </>
